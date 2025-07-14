@@ -1,28 +1,18 @@
-from pydantic import BaseModel
-from datetime import date
-from pydantic import Optional
+from sqlalchemy import Column,Integer,String,Date,Text,Boolean,ForeignKey
+from app.database import Base
 
-class Application(BaseModel):
-    company_name: str
-    position_name:str
-    application_status: str
-    application_date: date
-    application_deadline:Optional[date] = None
-    followed_up_status:bool
-    interviewed:bool
-    resume_link:str
-    notes: Optional[str] = None
+class Application(Base):
+    __tablename__ = "applications"
 
-    def wordify(self) -> dict:
-     return{
-        "company_name":self.company_name,
-        "position_name":self.position_name,
-        "application_status": self.application_status,
-        "application_date": self.application_date,
-        "application_deadline": self.application_deadline,
-        "followed_up_status": "Yes" if self.followed_up_status else "No",
-        "interviewed": "Yes" if self.interviewed else "No",
-        "resume_link": self.resume_link,
-        "Notes":self.notes
-     }
+    application_id = Column(Integer, primary_key = True)
+    user_id = Column(Integer)
+    company_name = Column(String)
+    position_name = Column(String)
+    application_status = Column(String)
+    application_date= Column(Date)
+    application_deadline = Column(Date)
+    followed_up_status = Column(Boolean)
+    interviewed_status = Column(Boolean)
+    resume_link = Column(String)
+    notes= Column(Text)
 

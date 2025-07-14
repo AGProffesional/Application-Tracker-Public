@@ -1,24 +1,23 @@
 #Creating the database structure
-from sqlalchemy import Column,Integer,String,Date,Text,Foreign_key
-from sqlalchemy.ext.declarative import declarative_base
+import os
 from sqlalchemy import create_engine
-from sqlalchemy import sessionmaker
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+from dotenv import load_dotenv
+load_dotenv(dotenv_path="development.env")  # explicitly point to your dev file
 
-Base = declarative_base
 
-class Application(Base):
-    __tablename__ = "applications"
+Base = declarative_base()
 
-    application_id = Column(Integer, primary_key = True)
-    user_id = Column(Integer, Foreign_key = True)
-    company = Column(String)
-    position = Column(String)
-    status = Column(String)
-    deadline = Column(Date)
-    resume_link = Column(String)
-    notes= Column(Text)
+DB_USER = os.getenv("DB_USER")
+DB_PASS = os.getenv("DB_PASS")
+DB_HOST = os.getenv("DB_HOST", "localhost")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME")
 
-DATABASE_URL = "postgresql+psycopg2://username:password@localhost:5432/dbname"
+
+DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+print("Database URL:", DATABASE_URL)
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
