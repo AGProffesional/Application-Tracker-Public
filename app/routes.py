@@ -47,3 +47,11 @@ def get_all_applications(db: Session = Depends(get_db)):
     db_apps = db.query(ApplicationModel).all()
     return [Wordify_application(app) for app in db_apps]
 
+@router.delete("/applications/{application_id}")
+def delete_applications(application_id: int, db: Session = Depends(get_db)):
+    db_app = db.query(ApplicationModel).filter(ApplicationModel.application_id == application_id).first()
+    if not db_app:
+        raise HTTPException(status_code=404, detail="Application not found")
+    db.delete(db_app)
+    db.commit()
+
