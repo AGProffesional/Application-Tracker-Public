@@ -82,5 +82,5 @@ jobs:
         context: .
         push: true
         tags: |
-          yourdockerhubusername/app-tracker-private:latest
-          yourdockerhubusername/app-tracker-private:${{ env.VERSION }}
+          agprofessional/app-tracker-private:latest
+          agprofessional/app-tracker-private:${{ env.VERSION }}
