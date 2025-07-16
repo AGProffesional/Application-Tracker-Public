@@ -5,8 +5,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.extensions import limiter
 from app.models import Application as ApplicationModel
-from app.schemas import (ApplicationCreate, ApplicationResponse,
-                         ApplicationUpdate)
+from app.schemas import ApplicationCreate, ApplicationResponse, ApplicationUpdate
 from app.utils import Wordify_application
 
 router = APIRouter()
