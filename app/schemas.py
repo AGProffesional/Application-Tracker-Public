@@ -1,6 +1,8 @@
 from pydantic import BaseModel
+from pydantic import ConfigDict
 from datetime import date
 from typing import Optional
+
 
 class ApplicationCreate(BaseModel):
     user_id:int
@@ -40,5 +42,4 @@ class ApplicationResponse(BaseModel):
     resume_link:str
     notes: Optional[str] = None
         
-    class Config:
-       from_attrbiutes = True
+    model_config = ConfigDict(from_attributes=True)

@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -14,13 +15,21 @@ from app.extensions import limiter
 
 app = FastAPI()
 
-@app.on_event("startup")
-def startup_event():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    #Startup logic
+    print("Creating database tables...")
     Base.metadata.create_all(bind=engine)
+    yield  
+    print("Disposing database engine...")
+    engine.dispose()  
 
+app = FastAPI(lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
+
+#Adds security to prevent making direct calls
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],

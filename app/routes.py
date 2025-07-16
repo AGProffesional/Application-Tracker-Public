@@ -18,7 +18,7 @@ router = APIRouter()
 @router.post("/applications/", response_model=ApplicationResponse)
 @limiter.limit("5/minute")
 def create_application(application: ApplicationCreate, request:Request, db: Session = Depends(get_db)):
-    new_app = ApplicationModel(**application.dict())
+    new_app = ApplicationModel(**application.model_dump())
     db.add(new_app)
     db.commit()
     db.refresh(new_app)
