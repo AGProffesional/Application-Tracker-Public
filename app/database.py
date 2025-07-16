@@ -1,4 +1,4 @@
-# creating the database structure
+# creating the database structures
 import os
 from pathlib import Path
 
