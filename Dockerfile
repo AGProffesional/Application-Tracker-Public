@@ -8,10 +8,10 @@ RUN apt-get update && apt-get install -y gcc g++ build-essential
 WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
-COPY requirements.txt .
+COPY requirements-dev.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements-dev.txt
 
 # Copy the actual code
 COPY . .
