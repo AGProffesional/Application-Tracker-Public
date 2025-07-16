@@ -37,20 +37,22 @@ jobs:
       with:
         python-version: "3.11"
 
-    - name: Install dependencies
+    - name: Install dev dependencies
       run: |
         pip install -r requirements-dev.txt
+        pip install isort black flake8
 
-    - name: Run tests
-      run: |
-        pytest --disable-warnings
+    - name: Run isort
+      run: isort . --check-only
 
-    - name: Install flake8
-      run: pip install flake8    
+    - name: Run Black
+      run: black . --check
 
-    - name: Run linting
-      run: |
-        flake8 app --max-line-length=88
+    - name: Run Flake8
+      run: flake8 app app/tests
+
+    - name: Run Tests
+      run: pytest --disable-warnings
 
   docker-deploy:
     needs: ci-checks

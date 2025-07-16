@@ -1,19 +1,19 @@
-from pydantic import BaseModel
-from pydantic import ConfigDict
 from datetime import date
 from typing import Optional
 
+from pydantic import BaseModel, ConfigDict
+
 
 class ApplicationCreate(BaseModel):
-    user_id:int
+    user_id: int
     company_name: str
-    position_name:str
+    position_name: str
     application_status: str
     application_date: date
-    application_deadline:Optional[date] = None
-    followed_up_status:bool
-    interviewed_status:bool
-    resume_link:str
+    application_deadline: Optional[date] = None
+    followed_up_status: bool
+    interviewed_status: bool
+    resume_link: str
     notes: Optional[str] = None
 
 
@@ -29,17 +29,18 @@ class ApplicationUpdate(BaseModel):
     resume_link: Optional[str] = None
     notes: Optional[str] = None
 
+
 class ApplicationResponse(BaseModel):
-    application_id:int
-    user_id:int
+    application_id: int
+    user_id: int
     company_name: str
-    position_name:str
+    position_name: str
     application_status: str
     application_date: date
-    application_deadline:Optional[date] = None
-    followed_up_status:bool
-    interviewed_status:bool
-    resume_link:str
+    application_deadline: Optional[date] = None
+    followed_up_status: bool
+    interviewed_status: bool
+    resume_link: str
     notes: Optional[str] = None
-        
+
     model_config = ConfigDict(from_attributes=True)
