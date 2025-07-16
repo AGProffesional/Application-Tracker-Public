@@ -8,10 +8,17 @@ client = TestClient(app)
 
 def test_create_application():
     payload = {
-        "company": "TestCorp",
-        "position": "Backend Developer",
-        "status": "applied"
-    }
+    "user_id": 1,
+    "company_name": "TestCorp",
+    "position_name": "Backend Developer",
+    "application_status": "applied",
+    "application_date": "2025-07-16",
+    "application_deadline": "2025-07-30",  # optional, but added for coverage
+    "followed_up_status": False,
+    "interviewed_status": False,
+    "resume_link": "https://example.com/resume.pdf",
+    "notes": "Initial application for backend role."
+}
     response = client.post("/applications/", json=payload)
     assert response.status_code == 200
     assert response.json()["company"] == "TestCorp"

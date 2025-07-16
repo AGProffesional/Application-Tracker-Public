@@ -1,16 +1,16 @@
 # app/routes.py
 from typing import Union, List
 from fastapi import APIRouter, Depends, HTTPException, Request
-
+from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import Application as ApplicationModel
 from app.utils import Wordify_application
-from app.main import limiter
 from app.schemas import (
     ApplicationCreate,
     ApplicationUpdate,
     ApplicationResponse,
 )
+from app.extensions import limiter
 
 
 router = APIRouter()

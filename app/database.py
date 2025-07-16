@@ -1,10 +1,12 @@
 #Creating the database structure
 import os
+from pathlib import Path
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from dotenv import load_dotenv
-load_dotenv(dotenv_path="development.env")  # explicitly point to your dev file
+env_path = Path(__file__).parent.parent/ ".env"  
+load_dotenv(dotenv_path=env_path)
 
 
 Base = declarative_base()

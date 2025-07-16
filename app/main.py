@@ -10,15 +10,14 @@ from pydantic import BaseModel
 from app.routes import router
 from app.models import Application
 from app.database import engine, Base
-
-
-
-Base.metadata.create_all(bind=engine)
-
+from app.extensions import limiter
 
 app = FastAPI()
 
-limiter = Limiter(key_func=get_remote_address)
+@app.on_event("startup")
+def startup_event():
+    Base.metadata.create_all(bind=engine)
+
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
