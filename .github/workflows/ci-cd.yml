@@ -26,7 +26,7 @@ jobs:
           --health-retries 5
 
     env:
-      DATABASE_URL: postgresql://testuser:testpass@localhost:5432/mydatabase
+      DATABASE_URL: postgresql://${{ secrets.TEST_DB_USER }}:${{ secrets.TEST_DB_PASS }}@localhost:5432/${{ secrets.TEST_DB }}
 
     steps:
     - name: Checkout code
