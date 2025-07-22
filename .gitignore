@@ -9,5 +9,5 @@ venv/
 .env/
 .env
 
-.Ds_Store
+.DS_Store
 Thumbs.db*
