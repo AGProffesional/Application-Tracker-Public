@@ -49,6 +49,7 @@ def update_application(
     db.refresh(db_app)
     return Wordify_application(db_app)
 
+
 @router.get("/applications/search", response_model=list[ApplicationResponse])
 @limiter.limit("3/minute")
 def search_applications(
@@ -58,7 +59,7 @@ def search_applications(
     application_status: Optional[str] = Query(None),
     start_date: Optional[datetimedate] = Query(None),
     end_date: Optional[datetimedate] = Query(None),
-    application_deadline:Optional[datetimedate] = Query(None),
+    application_deadline: Optional[datetimedate] = Query(None),
     followed_up_status: Optional[bool] = Query(None),
     interviewed_status: Optional[bool] = Query(None),
     db: Session = Depends(get_db),
@@ -70,17 +71,23 @@ def search_applications(
     if position_name:
         query = query.filter(ApplicationModel.position_name.ilike(f"%{position_name}%"))
     if application_status:
-        query = query.filter(ApplicationModel.application_status.ilike(f"%{application_status}%"))
+        query = query.filter(
+            ApplicationModel.application_status.ilike(f"%{application_status}%")
+        )
     if start_date and end_date:
-        query = query.filter(ApplicationModel.application_date.between(start_date, end_date))
+        query = query.filter(
+            ApplicationModel.application_date.between(start_date, end_date)
+        )
     elif start_date:
         query = query.filter(ApplicationModel.application_date >= start_date)
     elif end_date:
         query = query.filter(ApplicationModel.application_date <= end_date)
     if application_deadline:
-        query = query.filter(ApplicationModel.application_deadline == application_deadline)
+        query = query.filter(
+            ApplicationModel.application_deadline == application_deadline
+        )
     if followed_up_status is not None:
-        query= query.filter(ApplicationModel.followed_up_status)
+        query = query.filter(ApplicationModel.followed_up_status)
     if interviewed_status is not None:
         query = query.filter(ApplicationModel.interviewed_status)
 
