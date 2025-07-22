@@ -1,7 +1,7 @@
-#Application Tracking Tool
+# Application Tracking Tool
 A backend portfolio project built with Python using FastAPI, PostgreSQL, and Docker, designed to help users manage job applications effectively. This project showcases RESTful API design, containerized deployment, and CI/CD integration using GitHub Actions.
 
-#Features
+## Features
 -Create update and delete job applications
 -Filter by company, job position, application status, the date range of when the application was submitted, the application deadline, whether you've followed up, and whether you've interviwed.
 -Auto-generated Swagger docs
@@ -10,7 +10,7 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 -CI/CD pipeline with testing and linting using Github Actions
 
 
-#Tech Stack
+## Tech Stack
 |Technology    |Purpose                    |
 |--------------|---------------------------|
 |FastAPI       |Backend framework          |
@@ -20,7 +20,7 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 |GitHub Actions|CI/CD pipeline             |
 |Pydantic      |Data Validation            |
 
-**Setup Instructions**
+## Setup Instructions
 1. Clone the repository
 ```bash
 git clone https://github.com/testrepo
@@ -43,13 +43,13 @@ docker-compose up --build
 - API: http://localhost:8000
 - Swagger UI: http://localhost:8000/docs
 
-**Testing**
+## Testing
 To run tests inside the container:
 ```bash
 docker-compose exec app pytest
 ```
 
-**Project Structure**
+## Project Structure
 <pre>
 APPLICATION-TRACKER/
 ├── app/
@@ -75,5 +75,5 @@ APPLICATION-TRACKER/
 ├── requirements-dev.txt
 </pre>
 
-#License
+## License
 MIT License
