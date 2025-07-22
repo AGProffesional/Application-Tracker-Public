@@ -31,25 +31,28 @@ def test_create_application():
     print("RESPONSE JSON:", response.json())
 
 
-def test_get_single_application():
+def test_search_application_by_company_name():
     with TestClient(app) as client:
         payload = {
-            "user_id": 2,
-            "company_name": "FetchCorp",
-            "position_name": "DevOps Engineer",
-            "application_status": "interviewed",
-            "application_date": "2025-07-10",
+            "user_id": 5,
+            "company_name": "SearchCorp",
+            "position_name": "Full Stack Developer",
+            "application_status": "applied",
+            "application_date": "2025-07-21",
+            "application_deadline": "2025-08-01",
             "followed_up_status": True,
-            "interviewed_status": True,
-            "resume_link": "https://example.com/devops_resume.pdf",
-            "notes": "Interview completed.",
+            "interviewed_status": False,
+            "resume_link": "https://example.com/fullstack_resume.pdf",
+            "notes": "Excited about the tech stack.",
         }
-    response = client.post("/applications/", json=payload)
-    position_name = response.json()["position_name"]
+        create_response = client.post("/applications/", json=payload)
+        assert create_response.status_code == 200
+        assert create_response.json()["company_name"] == "SearchCorp"
 
-    get_response = client.get(f"/applications/{position_name}")
-    assert get_response.status_code == 200
-    assert get_response.json()["position_name"] == "DevOps Engineer"
+        search_response = client.get("/applications/search", params={"company_name": "SearchCorp"})
+        assert search_response.status_code == 200
+        assert isinstance(search_response.json(), list)
+        assert any(app["company_name"] == "SearchCorp" for app in search_response.json())
 
 
 def test_get_all_applications():
