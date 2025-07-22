@@ -22,7 +22,8 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 
 ## Setup Instructions
 1. 
-```For windows users:
+```
+For windows users:
 - run Start.bat to start the server
 
 For mac/linux users:
