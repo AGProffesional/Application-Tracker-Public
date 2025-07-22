@@ -21,25 +21,13 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 |Pydantic      |Data Validation            |
 
 ## Setup Instructions
-1. Clone the repository
-```bash
-git clone https://github.com/testrepo
-cd application-tracker
-```
+1. 
+- For windows users:
+  run Start.bat to start the server
+- For mac/linux users:
+  run Start.sh to start the server
 
-2. Set up Environment Variables
-```bash
-cp .env.example .env
-#Make sure to keep the DBHost and DBPort since the database is dockerized.
-#Fill in your own DBUser, DBPass, and DBName
-``` 
-
-3. Run with Docker Compose
-```bash
-docker-compose up --build
-```
-
-4. Access the app
+2. Access the app
 - API: http://localhost:8000
 - Swagger UI: http://localhost:8000/docs
 
