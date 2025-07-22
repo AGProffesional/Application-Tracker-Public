@@ -33,7 +33,8 @@ For mac/linux users:
 - API: http://localhost:8000
 - Swagger UI: http://localhost:8000/docs
 
-## Testing
+## Testing 
+(For advanced users that are interested)
 To run tests inside the container:
 ```bash
 docker-compose exec app pytest
