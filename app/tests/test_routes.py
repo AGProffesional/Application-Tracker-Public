@@ -89,16 +89,19 @@ def test_delete_application():
             "position_name": "QA Engineer",
             "application_status": "rejected",
             "application_date": "2025-07-01",
+            "application_deadline": "2025-08-01",
             "followed_up_status": False,
             "interviewed_status": False,
             "resume_link": "https://example.com/qa.pdf",
             "notes": "Position not filled.",
         }
-    response = client.post("/applications/", json=payload)
-    app_id = response.json()["application_id"]
+        response = client.post("/applications/", json=payload)
+        assert response.status_code == 200
+        app_id = response.json()["application_id"]
 
-    delete_response = client.delete(f"/applications/{app_id}")
-    assert delete_response.status_code == 200 or delete_response.status_code == 204
+        delete_response = client.delete(f"/applications/{app_id}")
+        assert delete_response.status_code in [200, 204]
 
-    follow_up = client.get(f"/applications/{app_id}")
-    assert follow_up.status_code == 404
+        follow_up = client.get("/applications/search", params={"application_id": app_id})
+        assert follow_up.status_code == 200
+        assert follow_up.json() == []  # Expect no results post-deletion
