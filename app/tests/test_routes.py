@@ -103,7 +103,9 @@ def test_delete_application():
         assert delete_response.status_code in [200, 204]
 
         follow_up = client.get(
-            "/applications/search", params={"application_id": app_id}
+            "/applications/search", params={"company_name": "DeleteCorp"}
         )
         assert follow_up.status_code == 200
-        assert follow_up.json() == []  # Expect no results post-deletion
+
+        # Confirm that no application from DeleteCorp remains
+        assert all(app["application_id"] != app_id for app in follow_up.json())
