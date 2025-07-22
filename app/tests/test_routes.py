@@ -49,10 +49,14 @@ def test_search_application_by_company_name():
         assert create_response.status_code == 200
         assert create_response.json()["company_name"] == "SearchCorp"
 
-        search_response = client.get("/applications/search", params={"company_name": "SearchCorp"})
+        search_response = client.get(
+            "/applications/search", params={"company_name": "SearchCorp"}
+        )
         assert search_response.status_code == 200
         assert isinstance(search_response.json(), list)
-        assert any(app["company_name"] == "SearchCorp" for app in search_response.json())
+        assert any(
+            app["company_name"] == "SearchCorp" for app in search_response.json()
+        )
 
 
 def test_get_all_applications():
