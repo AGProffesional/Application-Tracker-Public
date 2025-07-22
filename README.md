@@ -22,12 +22,12 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 
 ## Setup Instructions
 1. 
-**For windows users**:
+```For windows users:
 - run Start.bat to start the server
 
-**For mac/linux users**:
+For mac/linux users:
 - run Start.sh to start the server
-
+```
 2. Access the app
 - API: http://localhost:8000
 - Swagger UI: http://localhost:8000/docs
