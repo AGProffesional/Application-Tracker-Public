@@ -2,12 +2,12 @@
 A backend portfolio project built with Python using FastAPI, PostgreSQL, and Docker, designed to help users manage job applications effectively. This project showcases RESTful API design, containerized deployment, and CI/CD integration using GitHub Actions.
 
 ## Features
--Create update and delete job applications
--Filter by company, job position, application status, the date range of when the application was submitted, the application deadline, whether you've followed up, and whether you've interviwed.
--Auto-generated Swagger docs
--Dockerized for easy setup
--Secure environment configuration using a .env file
--CI/CD pipeline with testing and linting using Github Actions
+- Create update and delete job applications
+- Filter by company, job position, application status, the date range of when the application was submitted, the application deadline, whether you've followed up, and whether you've interviwed.
+- Auto-generated Swagger docs
+- Dockerized for easy setup
+- Secure environment configuration using a .env file
+- CI/CD pipeline with testing and linting using Github Actions
 
 
 ## Tech Stack
