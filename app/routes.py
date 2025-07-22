@@ -1,8 +1,9 @@
 # app/routes.py
-from fastapi import APIRouter, Depends, HTTPException, Request, Query
-from sqlalchemy.orm import Session
-from typing import Optional
 from datetime import date as datetimedate
+from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
+from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.extensions import limiter
