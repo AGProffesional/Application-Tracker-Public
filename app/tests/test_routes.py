@@ -45,9 +45,9 @@ def test_get_single_application():
             "notes": "Interview completed.",
         }
     response = client.post("/applications/", json=payload)
-    app_id = response.json()["application_id"]
+    position_name = response.json()["position_name"]
 
-    get_response = client.get(f"/applications/{app_id}")
+    get_response = client.get(f"/applications/{position_name}")
     assert get_response.status_code == 200
     assert get_response.json()["position_name"] == "DevOps Engineer"
 
