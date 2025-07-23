@@ -21,7 +21,12 @@ A backend portfolio project built with Python using FastAPI, PostgreSQL, and Doc
 |Pydantic      |Data Validation            |
 
 ## Setup Instructions
-1. 
+1.
+Install Docker:
+https://www.docker.com/products/docker-desktop/
+
+
+2.
 ```
 For windows users:
 - run Start.bat to start the server
@@ -29,7 +34,7 @@ For windows users:
 For mac/linux users:
 - run Start.sh to start the server
 ```
-2. Access the app
+3. Access the app
 - Swagger UI: http://localhost:8000/docs
 
 ## Testing 
