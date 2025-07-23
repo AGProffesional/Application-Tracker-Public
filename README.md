@@ -39,7 +39,7 @@ For mac/linux users:
 - Stay tuned for the custom frontend!
 
 ## Testing 
-(For advanced users that are interested)
+(For advanced users that are interested!)
 To run tests inside the container, make sure it's in detatched mode (docker-compose up -d)
 and then run:
 ```bash
