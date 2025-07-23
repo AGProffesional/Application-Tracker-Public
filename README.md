@@ -36,6 +36,7 @@ For mac/linux users:
 ```
 3. Access the app
 - Swagger UI: http://localhost:8000/docs
+- Stay tuned for the custom frontend!
 
 ## Testing 
 (For advanced users that are interested)
@@ -69,6 +70,8 @@ APPLICATION-TRACKER/
 ├── pyproject.toml
 ├── README.md
 ├── requirements-dev.txt
+├── Start.bat
+├── Start.sh
 </pre>
 
 ## License
