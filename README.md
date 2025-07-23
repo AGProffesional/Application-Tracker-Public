@@ -39,7 +39,8 @@ For mac/linux users:
 
 ## Testing 
 (For advanced users that are interested)
-To run tests inside the container:
+To run tests inside the container, make sure it's in detatched mode (docker-compose up -d)
+and then run:
 ```bash
 docker-compose exec app pytest
 ```
